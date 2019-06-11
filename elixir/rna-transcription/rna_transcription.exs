@@ -9,15 +9,7 @@ defmodule RNATranscription do
   """
   @spec to_rna([char]) :: [char]
   def to_rna(dna) do
-    transform_list(dna, &transcription(&1))
-  end
-
-  defp transform_list([], _) do
-    []
-  end
-
-  defp transform_list([h|t], fun) do
-    [fun.(h)|transform_list(t,fun)]
+    Enum.map(dna, &transcription/1)
   end
 
   defp transcription(nucleotide) do
